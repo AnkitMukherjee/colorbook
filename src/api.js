@@ -1,7 +1,7 @@
 // Create and Update
 export function saveColor(data) {
 	const isEditing = data.hasOwnProperty("id");
-	const url = isEditing ? "/api/saved-colors/" + data.id : "/saved-colors";
+	const url = isEditing ? "/api/saved-colors/" + data.id : "/api/saved-colors";
 	const method = isEditing ? "PUT" : "POST";
 	return fetch(url, {
 		method,

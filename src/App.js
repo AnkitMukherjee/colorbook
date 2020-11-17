@@ -51,7 +51,7 @@ function App() {
 							</li>
 							<li className="navigation-item">
 								<NavLink
-									to={"/saved-colors"}
+									to={"/api/saved-colors"}
 									activeClassName="active-item"
 									exact={true}
 								>
@@ -74,7 +74,7 @@ function App() {
 							<Route exact={true} path="/Print">
 								<PrintEditor />
 							</Route>
-							<Route exact={true} path="/saved-colors">
+							<Route exact={true} path="/api/saved-colors">
 								<SavedColors />
 							</Route>
 							<Route path="*">
