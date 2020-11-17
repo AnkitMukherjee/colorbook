@@ -14,7 +14,6 @@ import NotificationComponent from "./NotificationComponent.js";
 import fetchImage from "./fetchImage.js";
 import CreateColorModal from "./CreateColorModal.js";
 import ViewColorModal from "./ViewColorModal.js";
-import fetchImageTest from "./fetchImageTest.js";
 import { saveColor, fetchSavedColors, destroySavedColor } from "./api.js";
 import "./App.css";
 
@@ -129,8 +128,6 @@ const MobileEditor = () => {
 	const [allColors, setAllColors] = useState([]);
 	const [notificationText, setNotificationText] = useState();
 
-	const defaultColors = ["#000000", "#007AFF"];
-
 	const [loading, setLoading] = useState(true);
 	const [isModalShown, setIsModalShown] = useState(false);
 	const [isNotificationShown, setIsNotificationShown] = useState(false);
@@ -139,6 +136,9 @@ const MobileEditor = () => {
 		Promise.all([fetchImage("white"), fetchSavedColors()]).then(
 			([imageData, colors]) => {
 				setUnsplashImageData(imageData);
+
+				const defaultColors = ["#000000", "#007AFF"];
+				const savedColors = [];
 
 				colors.forEach((color) => {
 					savedColors[color.id] = color.hex;
@@ -354,13 +354,10 @@ const MobileEditor = () => {
 };
 
 const PrintEditor = () => {
-	const [unsplashImageData, setUnsplashImageData] = useState([]);
 	const [accentColor, setAccentColor] = useState("#1c1c1e");
 	const [savedColors, setSavedColors] = useState([]);
 	const [allColors, setAllColors] = useState([]);
 	const [notificationText, setNotificationText] = useState();
-
-	const defaultColors = ["#1c1c1e", "#123456"];
 
 	const [loading, setLoading] = useState(true);
 	const [isModalShown, setIsModalShown] = useState(false);
@@ -371,6 +368,10 @@ const PrintEditor = () => {
 			colors.forEach((color) => {
 				savedColors[color.id] = color.hex;
 			});
+
+			const defaultColors = ["#1c1c1e", "#123456"];
+			const savedColors = [];
+
 			setSavedColors(savedColors);
 			setAllColors(defaultColors.concat(savedColors));
 			setLoading(false);
