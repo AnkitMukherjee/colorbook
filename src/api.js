@@ -23,7 +23,7 @@ export function fetchSavedColors() {
 }
 
 export function fetchSavedColor(id) {
-	return fetch("/saved-colors/" + id).then((response) => {
+	return fetch("/api/saved-colors/" + id).then((response) => {
 		if (response.status >= 400) {
 			return Promise.reject(
 				<div className="inner-container">

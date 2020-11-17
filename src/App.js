@@ -131,14 +131,12 @@ const MobileEditor = () => {
 	const [loading, setLoading] = useState(true);
 	const [isModalShown, setIsModalShown] = useState(false);
 	const [isNotificationShown, setIsNotificationShown] = useState(false);
+	const defaultColors = ["#000000", "#007AFF"];
 
 	useEffect(() => {
 		Promise.all([fetchImage("white"), fetchSavedColors()]).then(
 			([imageData, colors]) => {
 				setUnsplashImageData(imageData);
-
-				const defaultColors = ["#000000", "#007AFF"];
-				const savedColors = [];
 
 				colors.forEach((color) => {
 					savedColors[color.id] = color.hex;
@@ -362,15 +360,13 @@ const PrintEditor = () => {
 	const [loading, setLoading] = useState(true);
 	const [isModalShown, setIsModalShown] = useState(false);
 	const [isNotificationShown, setIsNotificationShown] = useState(false);
+	const defaultColors = ["#1c1c1e", "#123456"];
 
 	useEffect(() => {
 		fetchSavedColors().then((colors) => {
 			colors.forEach((color) => {
 				savedColors[color.id] = color.hex;
 			});
-
-			const defaultColors = ["#1c1c1e", "#123456"];
-			const savedColors = [];
 
 			setSavedColors(savedColors);
 			setAllColors(defaultColors.concat(savedColors));
